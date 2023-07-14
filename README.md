@@ -1,4 +1,6 @@
 # ecnu_net
+> 该方案已废弃，仅当练习，请直接使用信息办给的脚本。
+
 Login and Logout Script for SRUN Network | ECNU 网关登录脚本
 
 ## 使用说明
@@ -20,7 +22,7 @@ pip install -r requirements.txt
 
 ```bash
 wget -c https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-tar -xvfj phantomjs-2.1.1-linux-x86_64.tar.bz2 && rm phantomjs-2.1.1-linux-x86_64.tar.bz2
+tar -xvf phantomjs-2.1.1-linux-x86_64.tar.bz2 && rm phantomjs-2.1.1-linux-x86_64.tar.bz2
 mv phantomjs-2.1.1-linux-x86_64/ phantomjs
 ```
 
