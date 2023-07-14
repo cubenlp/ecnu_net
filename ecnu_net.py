@@ -27,49 +27,49 @@ pingtest = lambda: os.system("ping -c 2 -W 3 baidu.com")
 
 # Login
 def Login(delay=5):
-	if pingtest() == 0: # the network is connected
-		print("Already connected to the Internet")
-		exit()
+    if pingtest() == 0: # the network is connected
+        print("Already connected to the Internet")
+        exit()
     # start the device
-	driver = webdriver.PhantomJS(executable_path="./phantomjs/bin/phantomjs")
-	driver.get(LoginPageUrl)
-	time.sleep(delay)
+    driver = webdriver.PhantomJS(executable_path="./phantomjs/bin/phantomjs")
+    driver.get(LoginPageUrl)
+    time.sleep(delay)
  
-	# set username
-	driver.find_element(By.XPATH, '//*[@id="username"]').send_keys(username)
+    # set username
+    driver.find_element(By.XPATH, '//*[@id="username"]').send_keys(username)
         
-	# set password
-	driver.find_element(By.XPATH, '//*[@id="password"]').send_keys(password)
+    # set password
+    driver.find_element(By.XPATH, '//*[@id="password"]').send_keys(password)
  
-	# click to login
-	driver.find_element(By.XPATH, '//*[@id="login-account"]').click()
+    # click to login
+    driver.find_element(By.XPATH, '//*[@id="login-account"]').click()
  
-	# wait for the response
-	time.sleep(2)
+    # wait for the response
+    time.sleep(2)
 
 def Logout():
     # start the device
-    driver = webdriver.Chrome()
+    driver = webdriver.PhantomJS(executable_path="./phantomjs/bin/phantomjs")
     driver.get(LoginPageUrl)
     time.sleep(3)
 
     # click to logout
     driver.find_element(By.XPATH, '//*[@id="logout"]').click()
 
-	# wait for the response
+    # wait for the response
     time.sleep(2)
 
 
 def main():
-	if args.mode == 'login':
-		Login()
-		exit()
-	elif args.mode == 'logout':
-		Logout()
-		exit()
-	else:
-		print("Unknown mode: " + args.mode)
-		exit()
+    if args.mode == 'login':
+        Login()
+        exit()
+    elif args.mode == 'logout':
+        Logout()
+        exit()
+    else:
+        print("Unknown mode: " + args.mode)
+        exit()
 
 if __name__ == '__main__' :
     main()
