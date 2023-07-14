@@ -13,8 +13,6 @@ parser = ArgumentParser(description='Script description')
 parser.add_argument('--user', '-u', help='Username')
 parser.add_argument('--password', '-p', help='Password')
 parser.add_argument('--method', '-m', help='Login or logout', default='login')
-parser.add_argument('--url', help='Login page url', default='https://login.ecnu.edu.cn/srun_portal_pc?ac_id=1&theme=pro')
-parser.add_argument('--force', help='Force login/logout', action='store_true')
 
 # parse the arguments
 args = parser.parse_args()
@@ -23,8 +21,7 @@ assert args.user is not None and args.password is not None, "Username and passwo
 username = args.user
 password = args.password
 method = args.method.lower()
-LoginPageUrl = args.url
-force = args.force # False by default
+LoginPageUrl = "https://login.ecnu.edu.cn/srun_portal_pc?ac_id=1&theme=pro"
 
 # Ping test: return 0 if success
 pingtest = lambda: os.system("ping -c 2 -W 3 baidu.com")
@@ -33,9 +30,7 @@ pingtest = lambda: os.system("ping -c 2 -W 3 baidu.com")
 def Login(delay=5):
 	if pingtest() == 0: # the network is connected
 		print("Already connected to the Internet")
-		if not force:
-			print("Use --force to login anyway")
-			return
+		exit()
     # start the device
 	driver = webdriver.PhantomJS(executable_path="./phantomjs/bin/phantomjs")
 	driver.get(LoginPageUrl)

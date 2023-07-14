@@ -12,4 +12,4 @@ COPY ecnu_net.py .
 COPY phantomjs .
 
 # run script
-CMD python -u ecnu_net.py -u $USERNAME -p $PASSWORD -m $METHOD --url $URL --force
+CMD python -u ecnu_net.py -u $USERNAME -p $PASSWORD -m $METHOD
