@@ -12,7 +12,7 @@ parser = ArgumentParser(description='Script description')
 ## add arguments
 parser.add_argument('--user', '-u', help='Username')
 parser.add_argument('--password', '-p', help='Password')
-parser.add_argument('--method', '-m', help='Login or logout', default='login')
+parser.add_argument('--mode', '-m', help='Login or logout', default='login')
 
 # parse the arguments
 args = parser.parse_args()
@@ -20,7 +20,7 @@ args = parser.parse_args()
 assert args.user is not None and args.password is not None, "Username and password are required"
 username = args.user
 password = args.password
-method = args.method.lower()
+mode = args.mode.lower()
 LoginPageUrl = "https://login.ecnu.edu.cn/srun_portal_pc?ac_id=1&theme=pro"
 
 # Ping test: return 0 if success
@@ -62,14 +62,14 @@ def Logout():
 
 
 def main():
-	if args.method == 'login':
+	if args.mode == 'login':
 		Login()
 		exit()
-	elif args.method == 'logout':
+	elif args.mode == 'logout':
 		Logout()
 		exit()
 	else:
-		print("Unknown method: " + args.method)
+		print("Unknown mode: " + args.mode)
 		exit()
 
 if __name__ == '__main__' :
